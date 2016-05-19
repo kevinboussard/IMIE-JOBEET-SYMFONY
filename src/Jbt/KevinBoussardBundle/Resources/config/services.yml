@@ -1,0 +1,4 @@
+services:
+#    jbt_kevin_boussard.example:
+#        class: Jbt\KevinBoussardBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

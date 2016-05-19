@@ -1,3 +1,8 @@
+jbt_kevin_boussard:
+    resource: "@JbtKevinBoussardBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3a046a8e-c8ee-454f-a5fc-223f11a83c6a" name="Default" comment="" />
+    <list default="true" id="3a046a8e-c8ee-454f-a5fc-223f11a83c6a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IMIE-JOBEET-SYMFONY.iml" afterPath="$PROJECT_DIR$/.idea/IMIE-JOBEET-SYMFONY.iml" />
+    </list>
     <ignored path="jobeet.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />

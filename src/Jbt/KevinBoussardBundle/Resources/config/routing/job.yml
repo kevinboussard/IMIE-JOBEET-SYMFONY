@@ -1,0 +1,24 @@
+jbt_job_index:
+    path:     /
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:index" }
+    methods:  GET
+
+jbt_job_show:
+    path:     /{id}/show
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:show" }
+    methods:  GET
+
+jbt_job_new:
+    path:     /new
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:new" }
+    methods:  [GET, POST]
+
+jbt_job_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:edit" }
+    methods:  [GET, POST]
+
+jbt_job_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:delete" }
+    methods:  DELETE

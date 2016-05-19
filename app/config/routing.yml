@@ -1,6 +1,5 @@
 jbt_kevin_boussard:
-    resource: "@JbtKevinBoussardBundle/Controller/"
-    type:     annotation
+    resource: "@JbtKevinBoussardBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

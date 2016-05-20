@@ -16,7 +16,7 @@
                     <h1><a href="{{ path('jbt_category_show', { 'slug': category.slug }) }}">{{ category.name }}</a></h1>
                 </div>
 
-                {% include 'JbtKevinBoussardBundle:job:list.html.twig' with {'jobs': category.activejobs} %}
+                {% include 'JbtKevinBoussardBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
 
                 {% if category.morejobs %}
                     <div class="more_jobs">

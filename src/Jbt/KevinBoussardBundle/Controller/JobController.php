@@ -30,7 +30,7 @@ class JobController extends Controller
             $category->setMoreJobs($em->getRepository('JbtKevinBoussardBundle:Job')->countActiveJobs($category->getId()) - $this->container->getParameter('max_jobs_on_homepage'));
         }
 
-        return $this->render('JbtKevinBoussardBundle:job:index.html.twig', array(
+        return $this->render('JbtKevinBoussardBundle:Job:index.html.twig', array(
             'categories' => $categories
         ));
     }
@@ -53,7 +53,7 @@ class JobController extends Controller
             return $this->redirectToRoute('jbt_job_show', array('id' => $job->getId()));
         }
 
-        return $this->render('JbtKevinBoussardBundle:job:new.html.twig', array(
+        return $this->render('JbtKevinBoussardBundle:Job:new.html.twig', array(
             'job' => $job,
             'form' => $form->createView(),
         ));
@@ -74,7 +74,7 @@ class JobController extends Controller
             throw $this->createNotFoundException('Unable to find Job entity.');
         }
 
-        return $this->render('JbtKevinBoussardBundle:job:show.html.twig', array(
+        return $this->render('JbtKevinBoussardBundle:Job:show.html.twig', array(
             'job' => $job,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -98,7 +98,7 @@ class JobController extends Controller
             return $this->redirectToRoute('jbt_job_edit', array('id' => $job->getId()));
         }
 
-        return $this->render('JbtKevinBoussardBundle:job:edit.html.twig', array(
+        return $this->render('JbtKevinBoussardBundle:Job:edit.html.twig', array(
             'job' => $job,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -17,7 +17,7 @@
         <h1>{{ category.name }}</h1>
     </div>
 
-    {% include 'JbtKevinBoussardBundle:job:list.html.twig' with {'jobs': category.activejobs} %}
+    {% include 'JbtKevinBoussardBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
 
     {% if last_page > 1 %}
         <div class="pagination">

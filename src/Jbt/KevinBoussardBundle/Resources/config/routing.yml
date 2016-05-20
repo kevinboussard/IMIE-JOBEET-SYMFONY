@@ -4,5 +4,5 @@ JbtKevinBoussardBundle_job:
     prefix: /job
 
 JbtKevinBoussardBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: JbtKevinBoussardBundle:Default:index }
+    pattern:  /
+    defaults: { _controller: JbtKevinBoussardBundle:Job:index }

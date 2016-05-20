@@ -4,9 +4,11 @@ jbt_job_index:
     methods:  GET
 
 jbt_job_show:
-    path:     /{id}/show
+    pattern:  /{company}/{location}/{id}/{position}
     defaults: { _controller: "JbtKevinBoussardBundle:Job:show" }
     methods:  GET
+    requirements:
+        id:  \d+
 
 jbt_job_new:
     path:     /new

@@ -10,17 +10,28 @@ jbt_job_show:
     requirements:
         id:  \d+
 
+jbt_job_preview:
+    pattern:  /{company}/{location}/{token}/{position}
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:preview" }
+    requirements:
+        token:  \w+
+
 jbt_job_new:
     path:     /new
     defaults: { _controller: "JbtKevinBoussardBundle:Job:new" }
     methods:  [GET, POST]
 
 jbt_job_edit:
-    path:     /{id}/edit
+    path:     /{token}/edit
     defaults: { _controller: "JbtKevinBoussardBundle:Job:edit" }
     methods:  [GET, POST]
 
 jbt_job_delete:
-    path:     /{id}/delete
+    path:     /{token}/delete
     defaults: { _controller: "JbtKevinBoussardBundle:Job:delete" }
-    methods:  DELETE
+    methods:  POST
+
+jbt_job_publish:
+    pattern:  /{token}/publish
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:publish" }
+    methods:  [POST]

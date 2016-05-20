@@ -13,9 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CategoryController extends Controller
 {
-    public function showAction(Request $request, $slug, $page)
+    public function showAction($slug, $page)
     {
-        $page = $request->get('page');
         $em = $this->getDoctrine()->getManager();
 
         $category = $em->getRepository('JbtKevinBoussardBundle:Category')->findOneBySlug($slug);

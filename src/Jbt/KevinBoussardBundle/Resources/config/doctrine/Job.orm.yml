@@ -61,5 +61,8 @@ Jbt\KevinBoussardBundle\Entity\Job:
         name: category_id
         referencedColumnName: id
   lifecycleCallbacks:
-    prePersist: [ setCreatedAtValue, setExpiresAtValue ]
-    preUpdate: [ setUpdatedAtValue ]
+    prePersist: [ setTokenValue, preUploadOnPrePersist, setCreatedAtValue, setExpiresAtValue ]
+    preUpdate: [ preUploadOnPreUpdate, setUpdatedAtValue ]
+    postPersist: [ upload ]
+    postUpdate: [ upload ]
+    postRemove: [ removeUpload ]

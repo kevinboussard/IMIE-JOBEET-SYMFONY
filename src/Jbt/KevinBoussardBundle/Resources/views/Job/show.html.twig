@@ -10,6 +10,10 @@
 {% endblock %}
 
 {% block content %}
+    {% if app.request.get('token') %}
+        {% include 'JbtKevinBoussardBundle:Job:admin.html.twig' with {'job': job} %}
+    {% endif %}
+
     <div id="job">
         <h1>{{ job.company }}</h1>
         <h2>{{ job.location }}</h2>
@@ -39,10 +43,5 @@
             <small>posted on {{ job.createdat|date('m/d/Y') }}</small>
         </div>
 
-        <div style="padding: 20px 0">
-            <a href="{{ path('jbt_job_edit', { 'id': job.id }) }}">
-                Edit
-            </a>
-        </div>
     </div>
 {% endblock %}

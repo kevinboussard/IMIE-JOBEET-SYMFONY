@@ -28,6 +28,11 @@ class Category
     private $category_affiliates;
 
     /**
+     * @var string
+     */
+    private $active_jobs;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -145,5 +150,24 @@ class Category
     {
         return $this->category_affiliates;
     }
-}
 
+    /**
+     * Set activeJobs
+     *
+     * @return string
+     */
+    public function setActiveJobs($jobs)
+    {
+        $this->active_jobs = $jobs;
+    }
+
+    /**
+     * Get activeJobs
+     *
+     * @return string
+     */
+    public function getActiveJobs()
+    {
+        return $this->active_jobs;
+    }
+}

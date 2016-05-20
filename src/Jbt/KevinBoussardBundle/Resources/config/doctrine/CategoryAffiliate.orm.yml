@@ -1,6 +1,7 @@
 # src/Jbt/KevinBoussardBundle/Resources/config/doctrine/CategoryAffiliate.orm.yml
 Jbt\KevinBoussardBundle\Entity\CategoryAffiliate:
   type: entity
+  repositoryClass: Jbt\KevinBoussardBundle\Repository\CategoryAffiliateRepository
   table: category_affiliate
   id:
     id:

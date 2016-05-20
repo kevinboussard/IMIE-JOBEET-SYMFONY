@@ -81,4 +81,3 @@ class CategoryAffiliate
         return $this->affiliate;
     }
 }
-

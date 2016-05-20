@@ -501,6 +501,18 @@ class Job
     }
 
     /**
+     * @ORM\PrePersist
+     */
+    public function setExpiresAtValue()
+    {
+        if(!$this->getExpiresAt())
+        {
+            $now = $this->getCreatedAt() ? $this->getCreatedAt()->format('U') : time();
+            $this->expires_at = new \DateTime(date('Y-m-d H:i:s', $now + 86400 * 30));
+        }
+    }
+
+    /**
      * @ORM\PreUpdate
      */
     public function setUpdatedAtValue()
@@ -508,19 +520,28 @@ class Job
         $this->updated_at = new \DateTime();
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getCompanySlug()
     {
         return Jobeet::slugify($this->getCompany());
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getPositionSlug()
     {
         return Jobeet::slugify($this->getPosition());
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getLocationSlug()
     {
         return Jobeet::slugify($this->getLocation());
     }
-}
 
+}

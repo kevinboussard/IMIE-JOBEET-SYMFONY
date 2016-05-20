@@ -1,6 +1,7 @@
 # src/Jbt/KevinBoussardBundle/Resources/config/doctrine/Category.orm.yml
 Jbt\KevinBoussardBundle\Entity\Category:
   type: entity
+  repositoryClass: Jbt\KevinBoussardBundle\Repository\CategoryRepository
   table: category
   id:
     id:

@@ -1,6 +1,7 @@
 # src/Jbt/KevinBoussardBundle/Resources/config/doctrine/Job.orm.yml
 Jbt\KevinBoussardBundle\Entity\Job:
   type: entity
+  repositoryClass: Jbt\KevinBoussardBundle\Repository\JobRepository
   table: job
   id:
     id:
@@ -60,5 +61,5 @@ Jbt\KevinBoussardBundle\Entity\Job:
         name: category_id
         referencedColumnName: id
   lifecycleCallbacks:
-    prePersist: [ setCreatedAtValue ]
+    prePersist: [ setCreatedAtValue, setExpiresAtValue ]
     preUpdate: [ setUpdatedAtValue ]

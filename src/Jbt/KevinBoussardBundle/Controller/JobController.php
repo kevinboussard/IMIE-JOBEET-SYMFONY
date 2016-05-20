@@ -22,10 +22,15 @@ class JobController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $jobs = $em->getRepository('JbtKevinBoussardBundle:Job')->findAll();
+        $categories = $em->getRepository('JbtKevinBoussardBundle:Category')->getWithJobs();
+
+        foreach($categories as $category)
+        {
+            $category->setActiveJobs($em->getRepository('JbtKevinBoussardBundle:Job')->getActiveJobs($category->getId(), $this->container->getParameter('max_jobs_on_homepage')));
+        }
 
         return $this->render('JbtKevinBoussardBundle:job:index.html.twig', array(
-            'jobs' => $jobs,
+            'categories' => $categories
         ));
     }
 
@@ -60,6 +65,13 @@ class JobController extends Controller
     public function showAction(Job $job)
     {
         $deleteForm = $this->createDeleteForm($job);
+        $em = $this->getDoctrine()->getManager();
+
+        $job = $em->getRepository('JbtKevinBoussardBundle:Job')->getActiveJob($job->getId());
+
+        if (!$job) {
+            throw $this->createNotFoundException('Unable to find Job entity.');
+        }
 
         return $this->render('JbtKevinBoussardBundle:job:show.html.twig', array(
             'job' => $job,

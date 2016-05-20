@@ -2,6 +2,8 @@
 
 namespace Jbt\KevinBoussardBundle\Entity;
 
+use Jbt\KevinBoussardBundle\Utils\Jobeet as Jobeet;
+
 /**
  * Category
  */
@@ -31,6 +33,16 @@ class Category
      * @var string
      */
     private $active_jobs;
+
+    /**
+     * @var string
+     */
+    private $more_jobs;
+
+    /**
+     * @var string
+     */
+    private $slug;
 
     /**
      * Constructor
@@ -169,5 +181,65 @@ class Category
     public function getActiveJobs()
     {
         return $this->active_jobs;
+    }
+
+    /**
+     * Set moreJobs
+     *
+     * @param $jobs
+     */
+    public function setMoreJobs($jobs)
+    {
+        $this->more_jobs = $jobs >=  0 ? $jobs : 0;
+    }
+
+    /**
+     * Get moreJobs
+     *
+     * @return string
+     */
+    public function getMoreJobs()
+    {
+        return $this->more_jobs;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Category
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setSlugValueOnPrePersist()
+    {
+        $this->slug = Jobeet::slugify($this->getName());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setSlugValueOnPreUpdate()
+    {
+        $this->slug = Jobeet::slugify($this->getName());
     }
 }

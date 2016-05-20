@@ -3,6 +3,10 @@ JbtKevinBoussardBundle_job:
     resource: "@JbtKevinBoussardBundle/Resources/config/routing/job.yml"
     prefix: /job
 
+JbtKevinBoussardBundle_category:
+    resource: "@JbtKevinBoussardBundle/Resources/config/routing/category.yml"
+    prefix: /category
+
 JbtKevinBoussardBundle_homepage:
     pattern:  /
     defaults: { _controller: JbtKevinBoussardBundle:Job:index }

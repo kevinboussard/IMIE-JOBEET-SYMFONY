@@ -18,8 +18,10 @@ class JobController extends Controller
      * Lists all Job entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $format = $request->getRequestFormat();
+
         $em = $this->getDoctrine()->getManager();
 
         $categories = $em->getRepository('JbtKevinBoussardBundle:Category')->getWithJobs();
@@ -30,8 +32,10 @@ class JobController extends Controller
             $category->setMoreJobs($em->getRepository('JbtKevinBoussardBundle:Job')->countActiveJobs($category->getId()) - $this->container->getParameter('max_jobs_on_homepage'));
         }
 
-        return $this->render('JbtKevinBoussardBundle:Job:index.html.twig', array(
-            'categories' => $categories
+        return $this->render('JbtKevinBoussardBundle:Job:index.'.$format.'.twig', array(
+            'categories' => $categories,
+            'lastUpdated' => $em->getRepository('JbtKevinBoussardBundle:Job')->getLatestPost()->getCreatedAt()->format(DATE_ATOM),
+            'feedId' => sha1($this->get('router')->generate('jbt_job_index', array('_format'=> 'atom'), true)),
         ));
     }
 

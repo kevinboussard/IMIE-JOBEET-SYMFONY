@@ -13,8 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CategoryController extends Controller
 {
-    public function showAction($slug, $page)
+    public function showAction(Request $request, $slug, $page)
     {
+        $format = $request->getRequestFormat();
+
         $em = $this->getDoctrine()->getManager();
 
         $category = $em->getRepository('JbtKevinBoussardBundle:Category')->findOneBySlug($slug);
@@ -31,13 +33,14 @@ class CategoryController extends Controller
 
         $category->setActiveJobs($em->getRepository('JbtKevinBoussardBundle:Job')->getActiveJobs($category->getId(), $jobs_per_page, ($page - 1) * $jobs_per_page));
 
-        return $this->render('JbtKevinBoussardBundle:Category:show.html.twig', array(
+        return $this->render('JbtKevinBoussardBundle:Category:show.'.$format.'.twig', array(
             'category' => $category,
             'last_page' => $last_page,
             'previous_page' => $previous_page,
             'current_page' => $page,
             'next_page' => $next_page,
-            'total_jobs' => $total_jobs
+            'total_jobs' => $total_jobs,
+            'feedId' => sha1($this->get('router')->generate('jbt_category_show', array('slug' =>  $category->getSlug(), '_format' => 'atom'), true)),
         ));
     }
 }

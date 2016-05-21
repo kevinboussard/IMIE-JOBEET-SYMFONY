@@ -81,6 +81,22 @@ class JobController extends Controller
             throw $this->createNotFoundException('Unable to find Job entity.');
         }
 
+        $session = $this->get('session');
+
+        // fetch jobs already stored in the job history
+        $jobs = $session->get('job_history', array());
+
+        // store the job as an array so we can put it in the session and avoid entity serialize errors
+        $job_temp = array('id' => $job->getId(), 'position' =>$job->getPosition(), 'company' => $job->getCompany(), 'companyslug' => $job->getCompanySlug(), 'locationslug' => $job->getLocationSlug(), 'positionslug' => $job->getPositionSlug());
+
+        if (!in_array($job_temp, $jobs)) {
+            // add the current job at the beginning of the array
+            array_unshift($jobs, $job_temp);
+
+            // store the new job history back into the session
+            $session->set('job_history', array_slice($jobs, 0, 3));
+        }
+
         return $this->render('JbtKevinBoussardBundle:Job:show.html.twig', array(
             'job' => $job,
             'delete_form' => $deleteForm->createView(),
@@ -175,7 +191,7 @@ class JobController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $this->get('session')->set('notice', 'Your job is now online for 30 days.');
+            $this->get('session')->getFlashBag()->add('notice', 'Your job is now online for 30 days.');
         }
 
         return $this->redirect($this->generateUrl('jbt_job_preview', array(
@@ -211,7 +227,7 @@ class JobController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $this->get('session')->set('notice', sprintf('Your job validity has been extended until %s.', $entity->getExpiresAt()->format('m/d/Y')));
+            $this->get('session')->getFlashBag()->add('notice', sprintf('Your job validity has been extended until %s.', $entity->getExpiresAt()->format('m/d/Y')));
         }
 
         return $this->redirect($this->generateUrl('jbt_job_preview', array(
@@ -234,7 +250,7 @@ class JobController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $job = $em->getRepository('EnsJobeetBundle:Job')->findOneByToken($token);
+            $job = $em->getRepository('JbtKevinBoussardBundle:Job')->findOneByToken($token);
 
             if (!$job) {
                 throw $this->createNotFoundException('Unable to find Job entity.');

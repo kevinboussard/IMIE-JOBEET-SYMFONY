@@ -10,3 +10,10 @@ JbtKevinBoussardBundle_category:
 JbtKevinBoussardBundle_homepage:
     pattern:  /
     defaults: { _controller: JbtKevinBoussardBundle:Job:index }
+
+# Authentification
+login:
+    pattern:   /login
+    defaults:  { _controller: JbtKevinBoussardBundle:Security:login }
+logout:
+    pattern:   /logout

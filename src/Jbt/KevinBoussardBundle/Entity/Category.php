@@ -2,6 +2,7 @@
 
 namespace Jbt\KevinBoussardBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Jbt\KevinBoussardBundle\Utils\Jobeet as Jobeet;
 
 /**

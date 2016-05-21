@@ -4,6 +4,13 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    admin.job:
+        class: Jbt\KevinBoussardBundle\Admin\JobAdmin
+        arguments: [~, Jbt\KevinBoussardBundle\Entity\Job, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Job }
+    admin.category:
+        class: Jbt\KevinBoussardBundle\Admin\CategoryAdmin
+        arguments: [~, Jbt\KevinBoussardBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }

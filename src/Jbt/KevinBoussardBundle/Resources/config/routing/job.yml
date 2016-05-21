@@ -35,3 +35,8 @@ jbt_job_publish:
     pattern:  /{token}/publish
     defaults: { _controller: "JbtKevinBoussardBundle:Job:publish" }
     methods:  [POST]
+
+jbt_job_extend:
+    pattern:  /{token}/extend
+    defaults: { _controller: "JbtKevinBoussardBundle:Job:extend" }
+    methods:  [POST]

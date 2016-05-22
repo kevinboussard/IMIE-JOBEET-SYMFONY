@@ -16,6 +16,11 @@ version: 2.6.0
 */
 body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;outline: none;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
 
+html, body{
+    height: 100%;
+    min-height: 100%;
+}
+
 a
 {
   color: #524F46;
@@ -32,12 +37,8 @@ body
 {
   margin-left: auto;
   margin-right: auto;
-  background: #fff url(../images/bg-page.png) bottom repeat-x;
-}
-
-#header
-{
-  background: url(../images/bg-header.jpg) repeat-x top;
+  background: url(../images/bg-manhattan.jpg) no-repeat;
+  background-size: cover;
 }
 
 #header h1
@@ -53,7 +54,6 @@ body
   height: 110px;
   background: url(../images/logo.jpg) no-repeat;
 }
-
 
 #header h1 img
 {
@@ -157,6 +157,11 @@ body
 #content .content {
   width: 783px;
   margin: 0 auto;
+  min-height: 625px;
+}
+
+#content .content-body #job_history, #content .content-body #content .content{
+    background-color: lightgrey;
 }
 
 #content h1
@@ -185,10 +190,10 @@ body
   margin-top: 60px;
   font-size: 90%;
   margin-bottom: 0px;
-  height: 153px;
-  background: url(../images/bg-footer.jpg) repeat-x bottom;
+  height: 53px;
   padding-top: 10px;
   position: relative;
+  background-color: lightgrey;
 }
 
 #footer .content {
@@ -373,4 +378,25 @@ em
 #job_form .radio_list li
 {
   display: inline;
+}
+
+#menu{
+    background: url(../images/bg-header.jpg);
+    background-size: cover;
+}
+
+#menu ul li a {
+    color: white;
+    border-bottom: none !important;
+    border-radius: inherit;
+}
+
+#menu ul li a:hover {
+    color: black;
+}
+
+#menuTitle{
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
 }

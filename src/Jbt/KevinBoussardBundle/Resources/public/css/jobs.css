@@ -25,11 +25,12 @@
 
 .jobs tr.odd
 {
+  background-color: #99CDD8;
 }
 
 .jobs tr:hover
 {
-  background-color: #fff;
+  background-color: #99CDD8;
 }
 
 .jobs td

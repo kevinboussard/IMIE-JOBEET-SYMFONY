@@ -7,6 +7,14 @@ JbtKevinBoussardBundle_category:
     resource: "@JbtKevinBoussardBundle/Resources/config/routing/category.yml"
     prefix: /category
 
+JbtKevinBoussardBundle_search:
+    resource: "@JbtKevinBoussardBundle/Resources/config/routing/search.yml"
+    prefix: /search
+
+JbtKevinBoussardBundle_ajax:
+    resource: "@JbtKevinBoussardBundle/Resources/config/routing/ajax.yml"
+    prefix: /api
+
 JbtKevinBoussardBundle_homepage:
     pattern:  /
     defaults: { _controller: JbtKevinBoussardBundle:Job:index }

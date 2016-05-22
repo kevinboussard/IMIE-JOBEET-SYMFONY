@@ -1,0 +1,54 @@
+{% extends 'JbtKevinBoussardBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/jbtkevinboussard/css/search.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block content %}
+    <div id="searchContent">
+        <h1>Create And Launch your SQL Request</h1>
+
+        <div id="searchRequest">
+            <div>
+                <label for="request" class="col-xs-12">SQL Request</label>
+                <textarea id="request" class="col-xs-12" name="requestText"></textarea>
+            </div>
+
+            <button id="launchRequest" class="col-xs-offset-5 col-xs-2 btn btn-info">Launch</button>
+
+            <div>
+                <label for="result" class="col-xs-12">Result</label>
+                <textarea id="result" class="col-xs-12" name="resultText" disabled></textarea>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('#launchRequest').click(function () {
+                var sql_request = $('#request').val();
+                var path = "{{ path('ajax_get_result_sql_request') }}";
+                if (sql_request != '') {
+                    $.ajax({
+                        url: path,
+                        type: 'POST',
+                        data: {'sql_request': sql_request},
+                        dataType: 'json',
+                        success: function (json) { // Succès de la réponse
+                            console.log(json)
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(xhr.statusText);
+                            alert(thrownError);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}

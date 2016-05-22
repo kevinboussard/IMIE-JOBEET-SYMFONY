@@ -1,0 +1,3 @@
+jbt_search_index:
+    pattern:  /
+    defaults: { _controller: JbtKevinBoussardBundle:Search:index }

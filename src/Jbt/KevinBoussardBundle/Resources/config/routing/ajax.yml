@@ -1,0 +1,4 @@
+ajax_get_result_sql_request:
+    pattern:  /result/request
+    defaults: { _controller: JbtKevinBoussardBundle:Ajax:getResultSqlRequest }
+    methods:  POST

@@ -1,13 +1,32 @@
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+{% extends 'base.html.twig' %}
 
-<form action="{{ path('login') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/jbtkevinboussard/css/login.css') }}" type="text/css" media="all" />
+{% endblock %}
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
+{% block body %}
+    <div id="login-body">
+        {% include 'JbtKevinBoussardBundle:Default:navbar.html.twig' %}
 
-    <button type="submit">login</button>
-</form>
+        <div id="login-content">
+            <h1 id="loginTitle">Jobeet - Authentification</h1>
+
+            {% if error %}
+                <div style="color: red" id="loginError">Error : {{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <form id="loginForm" action="{{ path('login') }}" method="post">
+                <div class="form-inline">
+                    <label for="username">Login</label>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="Login">
+                </div>
+                <div class="form-inline">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="_password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

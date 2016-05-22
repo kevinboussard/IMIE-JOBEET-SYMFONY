@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>
+            {% block title %}
+                Jobeet - Your best job board
+            {% endblock %}
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/jbtkevinboussard/bootstrap-3.3.6/css/bootstrap.min.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/jbtkevinboussard/css/main.css') }}" type="text/css" media="all" />
+        {% endblock %}
+        <link rel="shortcut icon" href="{{ asset('bundles/jbtkevinboussard/images/favicon.ico') }}" />
+        <link rel="alternate" type="application/atom+xml" title="Latest Jobs" href="{{ url('jbt_job_index', {'_format': 'atom'}) }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="{{  asset('bundles/jbtkevinboussard/bootstrap/js/bootstrap.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

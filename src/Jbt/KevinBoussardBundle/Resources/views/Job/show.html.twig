@@ -32,16 +32,20 @@
         {% endif %}
 
         <div class="description">
-            {{ job.description|nl2br }}
+            <p>{{ job.description|nl2br }}</p>
         </div>
 
         <h4>How to apply?</h4>
 
-        <p class="how_to_apply">{{ job.howtoapply }}</p>
+        <span class="how_to_apply">{{ job.howtoapply }}</span>
 
         <div class="meta">
             <small>posted on {{ job.createdat|date('m/d/Y') }}</small>
         </div>
+
+        {% if app.request.get('token') %}
+            <a class="col-xs-12 btn btn-info" href="{{ path('jbt_job_edit', { 'token': job.token}) }}">Edit</a>
+        {% endif %}
 
     </div>
 {% endblock %}

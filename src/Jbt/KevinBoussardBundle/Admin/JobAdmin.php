@@ -39,6 +39,7 @@ class JobAdmin extends AbstractAdmin
                 ->add('file', 'file', array('label' => 'Company logo', 'required' => false))
                 ->add('how_to_apply', null, array('label' => 'How to apply?'))
                 ->add('is_public', null, array('label' => 'Public?'))
+                ->add('is_activated', null, array('label' => 'Actif?'))
             ->end()
             ->with('Type And Category')
                 ->add('type', 'choice', array('choices' => Job::getTypes(), 'expanded' => true))

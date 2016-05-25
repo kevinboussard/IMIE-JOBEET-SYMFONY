@@ -70,9 +70,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-sonata_admin:
-    title: Jobeet Admin
-
 # Sonata Bundle
 sonata_block:
     default_contexts: [cms]
@@ -80,3 +77,31 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
+
+sonata_admin:
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_page1]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_page2]
+
+        groups:
+            sonata_page1:
+                label: "Jobs"
+                items:
+                    - admin.job
+
+            sonata_page2:
+                label: "Categories"
+                items:
+                    - admin.category
+
+    templates:
+        user_block: JbtKevinBoussardBundle:Sonata:user_block.html.twig

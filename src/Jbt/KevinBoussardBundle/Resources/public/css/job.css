@@ -1,9 +1,14 @@
-#job-content{
+#content .content{
+  background-color: inherit;
+}
+
+#job-content, #job-edit-content{
   background: rgba(195,209,214,0.9);
 }
 
 #job{
   background: rgba(195,209,214,0.9);
+  min-height: 250px;
 }
 
 #job h1

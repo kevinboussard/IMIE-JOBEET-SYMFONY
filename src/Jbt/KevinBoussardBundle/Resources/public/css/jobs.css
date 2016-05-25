@@ -14,7 +14,7 @@
 }
 .jobs
 {
- width: 760px;
+ width: 100%;
  margin: 0 auto;
 }
 
@@ -36,13 +36,6 @@
 .jobs td
 {
   padding: 12px 15px;
-  border-bottom: 1px dotted #999;
-}
-
-.jobs td.position,
-.jobs td.location
-{
-  border-right: 1px dotted #999;
 }
 
 .jobs .location
@@ -115,12 +108,11 @@
 
 .pagination
 {
-  margin-top: 10px;
   float: right;
-  margin-right: 10px;
   color: #176f94;
   font-size: 110%;
   font-weight: bold;
+  margin: 0 !important;
 }
 
 .pagination a

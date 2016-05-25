@@ -32,6 +32,7 @@
         $(document).ready(function() {
             $('#launchRequest').click(function () {
                 var sql_request = $('#request').val();
+                $( "#result" ).val('');
                 var path = "{{ path('ajax_get_result_sql_request') }}";
                 if (sql_request != '') {
                     $.ajax({
@@ -40,11 +41,22 @@
                         data: {'sql_request': sql_request},
                         dataType: 'json',
                         success: function (json) { // Succès de la réponse
-                            console.log(json)
+                            console.log(json['result']);
+                            if(json['result'] === '[]'){
+                                $( "#result" ).val( 'la requête sql ne retourne rien');
+                            }else {
+                                $content = $( "#result" ).val();
+                                $.each(JSON.parse(json['result']), function(i, item) {
+                                    for (var name in item) {
+                                        $content += name + " = " + item[name] + '\n';
+                                    }
+                                    $content += '\n';
+                                });
+                                $( "#result" ).val($content);
+                            }
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
-                            alert(xhr.statusText);
-                            alert(thrownError);
+                            $( "#result" ).val( 'la requête sql est incorrect' );
                         }
                     });
                 }

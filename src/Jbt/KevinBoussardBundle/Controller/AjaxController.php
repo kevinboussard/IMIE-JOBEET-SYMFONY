@@ -27,13 +27,21 @@ class AjaxController extends Controller
             if ($sqlRequest != '')
             {
                 $em = $this->getDoctrine()->getManager();
-                $query = $em->createQuery(
-                    $sqlRequest
-                );
+                $connection = $em->getConnection();
 
-                $result = $query->getResult();
+                $requeteType = substr($sqlRequest, 0, 6);
 
-                return new JsonResponse(array('result' => json_encode($result)));
+                if(strtolower($requeteType) == "select"){
+                    $statement = $connection->prepare($sqlRequest);
+                    $statement->execute();
+                    $results = $statement->fetchAll();
+                }else{
+                    $results = $connection->executeUpdate($sqlRequest);
+                }
+
+                return new JsonResponse(array('result' => json_encode($results)));
+            }else{
+                return new JsonResponse(array('result' => json_encode('empty')));
             }
 
         }

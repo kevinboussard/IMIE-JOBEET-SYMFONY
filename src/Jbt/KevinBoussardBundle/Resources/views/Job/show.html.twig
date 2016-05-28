@@ -43,7 +43,7 @@
             <small>posted on {{ job.createdat|date('m/d/Y') }}</small>
         </div>
 
-        {% if app.request.get('token') %}
+        {% if app.request.get('token') and job.isActivated == false %}
             <a class="col-xs-12 btn btn-info" href="{{ path('jbt_job_edit', { 'token': job.token}) }}">Edit</a>
         {% endif %}
 

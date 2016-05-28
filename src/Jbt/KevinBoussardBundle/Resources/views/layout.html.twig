@@ -5,41 +5,52 @@
 
             {% include 'JbtKevinBoussardBundle:Default:header.html.twig' %}
 
-            <div id="content col-xs-12" class="row">
+            <div id="content">
 
-                <div class="content">
-                    <div id="job_history">
-                        Recent viewed jobs:
-                        <ul>
-                            {% for job in app.session.get('job_history') %}
-                                <li>
-                                    <a href="{{ path('jbt_job_show', { 'id': job.id, 'company': job.companyslug, 'location': job.locationslug, 'position': job.positionslug }) }}">{{ job.position }} - {{ job.company }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                <div id="main-content" class="content">
 
+                    <div id="row">
 
-                    <div id="content">
-                        {% for flashMessage in app.session.flashbag.get('notice') %}
-                            <div class="flash_notice">
-                                {{ flashMessage }}
+                        <div class="col-xs-12" style="padding: 0; min-height: 100%">
+                            <div id="job_history">
+                                Recent viewed jobs:
+                                <ul>
+                                    {% for job in app.session.get('job_history') %}
+                                        <li>
+                                            <a href="{{ path('jbt_job_show', { 'id': job.id, 'company': job.companyslug, 'location': job.locationslug, 'position': job.positionslug }) }}">{{ job.position }} - {{ job.company }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
-                        {% endfor %}
 
-                        {% for flashMessage in app.session.flashbag.get('error') %}
-                            <div class="flash_error">
-                                {{ flashMessage }}
+
+                            <div id="content" class="background-dark-blueGreen">
+                                {% for flashMessage in app.session.flashbag.get('notice') %}
+                                    <div class="flash_notice">
+                                        {{ flashMessage }}
+                                    </div>
+                                {% endfor %}
+
+                                {% for flashMessage in app.session.flashbag.get('error') %}
+                                    <div class="flash_error">
+                                        {{ flashMessage }}
+                                    </div>
+                                {% endfor %}
+
+                                <div class="content" style="width: 100%">
+                                    {% block content %}
+                                    {% endblock %}
+                                </div>
                             </div>
-                        {% endfor %}
 
-                        <div class="content">
-                            {% block content %}
-                            {% endblock %}
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
 
             {% include 'JbtKevinBoussardBundle:Default:footer.html.twig' %}
         </div>

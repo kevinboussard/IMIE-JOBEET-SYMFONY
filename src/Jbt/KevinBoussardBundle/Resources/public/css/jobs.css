@@ -30,7 +30,8 @@
 
 .jobs tr:hover
 {
-  background-color: #99CDD8;
+  background-color: #67b168;
+  cursor: pointer;
 }
 
 .jobs td
@@ -89,7 +90,7 @@
 
 .more_jobs a:hover
 {
-  color: #176f94;
+  color: darkslategrey;
   text-decoration: underline;
 }
 

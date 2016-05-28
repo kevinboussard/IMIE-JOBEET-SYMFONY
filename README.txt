@@ -1,7 +1,15 @@
 Repository : https://github.com/kevinboussard/IMIE-JOBEET-SYMFONY
 
+2 types d'installations :
 
-Installation du projet Jobeet :
+* Order des fichiers d'installation des fichiers .cmd du projet Jobeet :
+
+	- composer-update.cmd
+
+	- install.cmd
+
+
+* Installation standard du projet Jobeet :
 
 	* Se positionner dans le dossier du projet qui vient d'être cloner ou télécharger.
 

@@ -1,5 +1,3 @@
-composer update
-
 php app/console doctrine:schema:create
 
 php app/console doctrine:schema:update --force

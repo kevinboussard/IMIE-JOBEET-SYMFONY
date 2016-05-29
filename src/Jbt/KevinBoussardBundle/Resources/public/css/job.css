@@ -9,6 +9,7 @@
 #job{
   background: rgba(195,209,214,0.9);
   min-height: 250px;
+  word-break: break-all;
 }
 
 #job h1

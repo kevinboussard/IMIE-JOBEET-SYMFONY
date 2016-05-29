@@ -12,10 +12,16 @@
   text-decoration: none;
   text-transform: uppercase;
 }
+
+#jobs-content{
+  padding-bottom: 53px;
+}
+
 .jobs
 {
- width: 100%;
- margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
+  word-break: break-all;
 }
 
 .jobs tr.even
@@ -76,8 +82,8 @@
   text-align: right;
   text-transform: uppercase;
   font-size: 85%;
-  margin: 5px 15px 15px;
   clear: both;
+  background-color: rgba(195,209,214,0.9);
 }
 
 .more_jobs a
@@ -92,6 +98,10 @@
 {
   color: darkslategrey;
   text-decoration: underline;
+}
+
+.pagination-content{
+  background-color: rgba(195,209,214,0.9);
 }
 
 .pagination_desc

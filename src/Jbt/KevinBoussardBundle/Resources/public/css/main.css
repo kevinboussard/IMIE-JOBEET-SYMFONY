@@ -5,7 +5,7 @@ Code licensed under the BSD License:
 http://developer.yahoo.net/yui/license.txt
 version: 2.6.0
 */
-html{color:#000;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
+html{color:#000; }body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
 
 /*
 Fonts CSS
@@ -18,6 +18,7 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 
 html, body{
     height: 100%;
+    box-sizing: border-box;
     min-height: 800px;
 }
 
@@ -33,10 +34,25 @@ body
   background-color: #828f95;
 }
 
+.row{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.container-fluid{
+  margin: 0; padding: 0;
+  height: 100%;
+}
+
 #container
 {
   margin-left: auto;
   margin-right: auto;
+
+  height: 100%;
+}
+
+#container #content{
   background: url(../images/bg-manhattan.jpg) no-repeat center center fixed;
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
@@ -157,7 +173,6 @@ body
 }
 
 #content .content {
-  width: 95%;
   margin: 0 auto;
 }
 
@@ -405,12 +420,6 @@ em
     color: white;
 }
 
-@media (max-height: 900px) {
-  body, html{
-    height: inherit;
-  }
-}
-
 /* Small devices (tablets, 768px and up) */
 @media (max-width: 50em) {
   #menu ul li a {
@@ -438,4 +447,10 @@ em
   #loginForm button{
     width: 40% !important;
   }
+  
+  #job_description, #job_how_to_apply{
+    max-width: 250px;
+  }
+
+
 }
